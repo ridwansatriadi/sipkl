@@ -12,5 +12,9 @@ class Surat extends Model
     {
         return $this->belongsTo(Pengajuan::class);
     }
+    public function kaprodi()
+    {
+        return $this->belongsTo(Kaprodi::class);
+    }
 
 }

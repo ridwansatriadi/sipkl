@@ -15,11 +15,17 @@ use App\Models\Mahasiswa;
 use App\Models\Dpl;
 use Spatie\Permission\Traits\HasRoles;
 
+/**
+ * @method bool hasRole(string|array $roles)
+ * @method bool hasAnyRole(string|array $roles)
+ * @method \Illuminate\Database\Eloquent\Relations\BelongsToMany roles()
+ */
+
 class User extends Authenticatable
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable, HasRoles;
-
+    use HasFactory, Notifiable;
+    use HasRoles;
 
     /**
      * The attributes that are mass assignable.
@@ -89,5 +95,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Dpl::class);
     }
-} 
 
+    
+
+}

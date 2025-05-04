@@ -15,6 +15,6 @@ class Prodi extends Model
 
     public function kaprodis()
     {
-        return $this->hasMany(Kaprodi::class);
+        return $this->hasOne(Kaprodi::class);
     }
 }

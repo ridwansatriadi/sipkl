@@ -48,7 +48,7 @@ class LogbookResource extends Resource
                 ->required(),
 
             Forms\Components\RichEditor::make('kegiatan')
-                ->label('Kegiatan')
+                ->label('kegiatan')
                 ->required()
                 ->columnSpanFull(),
 
@@ -73,19 +73,31 @@ class LogbookResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('bimbingan.mahasiswa.user.name')
-                    ->label('Nama Mahasiswa'),
+                    ->label('Nama Mahasiswa')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal')
                     ->date()
-                    ->label('Tanggal'),
+                    ->label('Tanggal')
+                    ->searchable(),
                 Tables\Columns\ImageColumn::make('dokumentasi')
                     ->label('Dokumentasi')
                     ->circular()
                     ->disk('public'),       
-                    Tables\Columns\TextColumn::make('kegiatan')
-                    ->label('Kegiatan'),         
-                    // ->width(100),                
+                Tables\Columns\TextColumn::make('kegiatan')
+                    ->label('Kegiatan')
+                    ->html()
+                    ->limit(400)
+                    ->action(
+                        Tables\Actions\Action::make('lihat_kegiatan')
+                            ->label('Lihat')
+                            ->icon('heroicon-o-eye')
+                            ->modalHeading('Kegiatan PKL')
+                            ->modalContent(fn ($record) => view('tables.columns.kegiatan-modal', ['record' => $record])) // ✅ BENAR
+                        ),
+                
                 Tables\Columns\TextColumn::make('status_verifikasi')
-                    ->label('Status Verifikasi'),
+                    ->label('Status Verifikasi')
+                    ->searchable(),
             ])
             ->filters([
                 //

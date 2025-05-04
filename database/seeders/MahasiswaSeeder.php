@@ -21,15 +21,15 @@ class MahasiswaSeeder extends Seeder
             ['user_id' => 9,  'nim' => '2101010005', 'prodi_id' => 1, 'angkatan' => '2021'], // Miftahul Jannah
 
             // Prodi: Ilmu Komputer (id: 2)
-            ['user_id' => 10, 'nim' => '2101020001', 'prodi_id' => 2, 'angkatan' => '2021'], // Sumarno
-            ['user_id' => 11, 'nim' => '2101020002', 'prodi_id' => 2, 'angkatan' => '2021'], // Viqiami
-            ['user_id' => 12, 'nim' => '2101020003', 'prodi_id' => 2, 'angkatan' => '2021'], // Syahrul
-            ['user_id' => 13, 'nim' => '2101020004', 'prodi_id' => 2, 'angkatan' => '2021'], // satrio
-            ['user_id' => 14, 'nim' => '2101020004', 'prodi_id' => 2, 'angkatan' => '2021'], // Angga
+            ['user_id' => 10, 'nim' => '2101020001', 'prodi_id' => 3, 'angkatan' => '2021'], // Sumarno
+            ['user_id' => 11, 'nim' => '2101020002', 'prodi_id' => 3, 'angkatan' => '2021'], // Viqiami
+            ['user_id' => 12, 'nim' => '2101020003', 'prodi_id' => 3, 'angkatan' => '2021'], // Syahrul
+            ['user_id' => 13, 'nim' => '2101020004', 'prodi_id' => 3, 'angkatan' => '2021'], // satrio
+            ['user_id' => 14, 'nim' => '2101020004', 'prodi_id' => 3, 'angkatan' => '2021'], // Angga
 
             // Prodi: Teknik Sipil (id: 3)
-            ['user_id' => 15, 'nim' => '2101030001', 'prodi_id' => 3, 'angkatan' => '2021'], // Dewe
-            ['user_id' => 16, 'nim' => '2101030002', 'prodi_id' => 3, 'angkatan' => '2021'], // Rahman
+            ['user_id' => 15, 'nim' => '2101030001', 'prodi_id' => 2, 'angkatan' => '2021'], // Dewe
+            ['user_id' => 16, 'nim' => '2101030002', 'prodi_id' => 2, 'angkatan' => '2021'], // Rahman
         ];
 
         foreach ($mahasiswas as $data) {

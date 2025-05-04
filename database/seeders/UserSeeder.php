@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Spatie\Permission\Models\Role;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -22,7 +23,7 @@ class UserSeeder extends Seeder
             ],
             [
                 'name' => 'Syahrani Lonang',
-                'email' => 'lonang@gmail.com',
+                'email' => 'syahranilonang@gmail.com',
                 'role' => 'kaprodi',
                 'password' => 'kaproditi123',
             ],
@@ -148,13 +149,18 @@ class UserSeeder extends Seeder
             ],
         ];
 
-        foreach ($users as $user) {
-            User::create([
-                'name' => $user['name'],
-                'email' => $user['email'],
-                'role' => $user['role'],
-                'password' => Hash::make($user['password']), // penting! jangan lupa hash
+       
+        foreach ($users as $data) {
+            $user = User::create([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'role' => $data['role'],
+                'password' => Hash::make($data['password']),
             ]);
+
+            // Buat role jika belum ada dan assign
+            // $role = Role::firstOrCreate(['name' => $data['role']]);
+            // $user->assignRole($role);
         }
     }
 }

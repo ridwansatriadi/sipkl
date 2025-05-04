@@ -17,6 +17,10 @@ class Bimbingan extends Model
     {
         return $this->belongsTo(Dpl::class,'dpl_id');
     }
+    public function kaprodi()
+    {
+        return $this->belongsTo(Kaprodi::class,'dpl_id');
+    }
 
     public function logbooks()
     {

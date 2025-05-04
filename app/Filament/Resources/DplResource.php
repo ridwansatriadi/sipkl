@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\DplResource\Pages;
 use App\Filament\Resources\DplResource\RelationManagers;
 use App\Models\Dpl;
+use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -19,8 +20,17 @@ class DplResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Dpl';
-
+    public static function getNavigationLabel(): string
+    {
+        $user = Filament::auth()->user();
+          /** @var \App\Models\User $user */
+    
+        if ($user && $user->hasRole('kaprodi')) {
+            return 'Kelola DPL';
+        }
+    
+        return 'Dpl'; // Label default jika bukan kaprodi
+    }
     public static function form(Form $form): Form
     {
         return $form
@@ -30,6 +40,9 @@ class DplResource extends Resource
                     ->relationship('user', titleAttribute: 'name')
                     ->searchable()
                     ->preload()
+                    ->required(),
+                Forms\Components\TextInput::make('nidn')
+                    ->label('NIDN')
                     ->required(),
                 Forms\Components\TextInput::make('bidang_keahlian')
                     ->label('Bidang Keahlian')
@@ -42,17 +55,14 @@ class DplResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('user.name')
-                    ->label('Nama Dosen Pembimbing'),
+                    ->label('Nama Dosen Pembimbing')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nidn')
+                    ->label('NIDN')
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('bidang_keahlian')
-                    ->label('Bidang Keahlian'),
-                // Tables\Columns\TextColumn::make('created_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                // Tables\Columns\TextColumn::make('updated_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
+                    ->label('Bidang Keahlian')
+                    ->searchable(),
             ])
             ->filters([
                 //

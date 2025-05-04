@@ -14,9 +14,14 @@ return new class extends Migration
         Schema::create('surats', function (Blueprint $table) {
             $table->id();
             $table->foreignId('pengajuan_id')->constrained('pengajuans');
-            $table->string('jenis_surat');
+            $table->enum('jenis_surat', ['Surat Permohonan Izin','Surat Jalan', 'Surat Penarikan']);
             $table->date('tanggal_terbit');
-            $table->string('file_surat');
+            $table->string('file_surat')->nullable();
+            $table->date('tanggal_mulai');
+            $table->date('tanggal_selesai');
+            $table->string('nomor_surat_izin')->nullable();
+            $table->string('nomor_surat_jalan')->nullable();
+            $table->string('nomor_surat_penarikan')->nullable();
             $table->timestamps();
         });
     }

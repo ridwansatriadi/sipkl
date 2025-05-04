@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('bimbingan_id')->constrained('bimbingans');
             $table->string('file_laporan');
-            $table->string('status_verifikasi');
+            $table->string('status_verifikasi')->default('belum diverifikasi')->change();
             $table->string('keterangan');
             $table->timestamps();
         });

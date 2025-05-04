@@ -21,8 +21,17 @@ class BimbinganResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
-    protected static ?string $navigationLabel = 'Bimbingan';
-    protected static ?string $pluralLabel = 'Bimbingan';
+    public static function getNavigationLabel(): string
+    {
+        $user = Filament::auth()->user();
+          /** @var \App\Models\User $user */
+    
+        if ($user && $user->hasRole('kaprodi')) {
+            return 'Kelola Bimbingan';
+        }
+    
+        return 'Bimbingan'; // Label default jika bukan kaprodi
+    }    protected static ?string $pluralLabel = 'Bimbingan';
 
     public static function form(Form $form): Form
     {
@@ -94,18 +103,17 @@ class BimbinganResource extends Resource
                 Tables\Columns\TextColumn::make('mahasiswa.user.name')
                     ->label('Nama Mahasiswa')
                     ->searchable(),
-
                 Tables\Columns\TextColumn::make('dpl.user.name')
                     ->label('Nama DPL')
                     ->searchable(),
-
                 Tables\Columns\TextColumn::make('tanggal_mulai')
                     ->label('Tanggal Mulai')
-                    ->date(),
-
+                    ->date()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('tanggal_selesai')
                     ->label('Tanggal Selesai')
-                    ->date(),
+                    ->date()
+                    ->searchable(),
             ])
             ->filters([
                 // Tambahkan filter jika diperlukan

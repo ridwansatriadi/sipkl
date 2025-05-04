@@ -70,33 +70,32 @@ class NilaiResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('bimbingan.mahasiswa.user.name')
+                    ->searchable()
                     ->label('Nama Mahasiswa'),
                 Tables\Columns\TextColumn::make('pengamatan')
                     ->label('Pengamatan Dilapangan')
+                    ->searchable()
                     ->numeric(),
                 Tables\Columns\TextColumn::make('kesimpulan')
                     ->label('Kesimpulan Dan Saran')
+                    ->searchable()
                     ->numeric(),
                 Tables\Columns\TextColumn::make('sistematika')
                     ->label('Sistematika Penulisan')
+                    ->searchable()
                     ->numeric(),
                 Tables\Columns\TextColumn::make('bahasa')
                     ->label('Struktur Bahasa')
+                    ->searchable()
                     ->numeric(),
                 Tables\Columns\TextColumn::make('jumlah')
                     ->label('Jumlah')
+                    ->searchable()
                     ->numeric(),
                 Tables\Columns\TextColumn::make('nilai')
                     ->label('Nilai Rata-Rata')
+                    ->searchable()
                     ->numeric(),
-                // Tables\Columns\TextColumn::make('created_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                // Tables\Columns\TextColumn::make('updated_at')
-                //     ->dateTime()
-                //     ->sortable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
             ])
             ->filters([
                 //

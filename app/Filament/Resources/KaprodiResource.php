@@ -28,7 +28,6 @@ class KaprodiResource extends Resource
                     Forms\Components\Select::make('user_id')
                     ->relationship('user', titleAttribute: 'name') // ambil dari relasi user, tampilkan kolom nama
                     ->label(label: 'Nama Kaprodi')
-                    ->searchable()
                     ->required()
                     ->preload(),
                     Forms\Components\TextInput::make('nidn')
@@ -38,7 +37,6 @@ class KaprodiResource extends Resource
                     ->label('Prodi')
                     ->relationship('prodi', titleAttribute: 'nama') // ambil dari relasi user, tampilkan kolom nama
                     ->required()
-                    ->searchable()
                     ->preload(),
             ]);
     }
